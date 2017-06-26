@@ -7,6 +7,7 @@ import java.util.concurrent.TimeUnit;
 public class PLCview {
 
     public static void main(String[] args) {
+        Settings.loadSetting();
         ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
         service.scheduleAtFixedRate(new AcquisitionRun(), 0, 30, TimeUnit.SECONDS);
     }
