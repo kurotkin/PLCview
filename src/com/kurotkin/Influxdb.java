@@ -4,7 +4,6 @@ import org.influxdb.InfluxDB;
 import org.influxdb.InfluxDBFactory;
 import org.influxdb.dto.BatchPoints;
 import org.influxdb.dto.Point;
-
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -15,8 +14,11 @@ public class Influxdb {
     private static String dbName;
 
     public void Influxdb() {
-        influxDB = InfluxDBFactory.connect("http://127.0.0.1:8086", "root", "root");
-        dbName = "aTimeSeries";
+        String InfluxDBUrl = Settings.getInfluxDBUrl();
+        String InfluxDBUser = Settings.getInfluxDBUrl();
+        String InfluxDBPass = Settings.getInfluxDBPass();
+        influxDB = InfluxDBFactory.connect(InfluxDBUrl, InfluxDBUser, InfluxDBPass);
+        dbName = Settings.getInfluxDBdbName();
         influxDB.createDatabase(dbName);
     }
 
