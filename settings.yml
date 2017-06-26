@@ -1,7 +1,7 @@
 # Настройки #
 
 HTTPgetterUrl: http://192.168.1.50/awp/json.htm
-InfluxDBUrl: http://127.0.0.1:8086
+InfluxDBUrl: http://192.168.1.20:8086
 InfluxDBUser: root
 InfluxDBPass: root
 InfluxDBdbName: aTimeSeries

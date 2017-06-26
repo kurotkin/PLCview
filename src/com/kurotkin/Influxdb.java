@@ -13,7 +13,7 @@ public class Influxdb {
     private static InfluxDB influxDB;
     private static String dbName;
 
-    public void Influxdb() {
+    public Influxdb() {
         String InfluxDBUrl = Settings.getInfluxDBUrl();
         String InfluxDBUser = Settings.getInfluxDBUrl();
         String InfluxDBPass = Settings.getInfluxDBPass();
@@ -22,10 +22,10 @@ public class Influxdb {
         influxDB.createDatabase(dbName);
     }
 
-    public static void insert (Device[] data) {
+    public void insert (Device[] data) {
         BatchPoints batchPoints = BatchPoints
                 .database(dbName)
-                .tag("async", "true")
+                //.tag("async", "true")
                 .retentionPolicy("autogen")
                 .consistency(InfluxDB.ConsistencyLevel.ALL)
                 .build();
@@ -34,11 +34,17 @@ public class Influxdb {
             String tableName = d.name;
             Point.Builder builder = Point.measurement(tableName);
             builder.time(System.currentTimeMillis(), TimeUnit.MILLISECONDS);
+            System.out.println(d.name);
             for (Content c : d.content) {
                 builder.addField(c.name, c.val);
+                System.out.print("   ");
+                System.out.print(c.name);
+                System.out.print(":   ");
+                System.out.println(c.val);
             }
             batchPoints.point(builder.build());
         }
+        System.out.println("");
         influxDB.write(batchPoints);
     }
 }

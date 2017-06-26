@@ -3,6 +3,7 @@
     <properties maven-id="com.esotericsoftware.yamlbeans:yamlbeans:1.12" />
     <CLASSES>
       <root url="jar://$MAVEN_REPOSITORY$/com/esotericsoftware/yamlbeans/yamlbeans/1.12/yamlbeans-1.12.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/esotericsoftware/yamlbeans/yamlbeans/1.12/yamlbeans-1.12.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

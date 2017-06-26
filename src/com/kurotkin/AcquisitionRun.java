@@ -6,7 +6,11 @@ import com.google.gson.Gson;
  * Created by Vitaly Kurotkin on 26.06.2017.
  */
 public class AcquisitionRun implements Runnable {
-    private static Influxdb influxdb = new Influxdb();
+    private Influxdb influxdb;
+
+    public AcquisitionRun() {
+        influxdb = new Influxdb();
+    }
 
     @Override
     public void run() {
