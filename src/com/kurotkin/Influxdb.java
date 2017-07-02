@@ -37,14 +37,9 @@ public class Influxdb {
             System.out.println(d.name);
             for (Content c : d.content) {
                 builder.addField(c.name, c.val);
-                System.out.print("   ");
-                System.out.print(c.name);
-                System.out.print(":   ");
-                System.out.println(c.val);
             }
             batchPoints.point(builder.build());
         }
-        System.out.println("");
         influxDB.write(batchPoints);
     }
 }
