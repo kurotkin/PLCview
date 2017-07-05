@@ -34,7 +34,6 @@ public class Influxdb {
             String tableName = d.name;
             Point.Builder builder = Point.measurement(tableName);
             builder.time(System.currentTimeMillis(), TimeUnit.MILLISECONDS);
-            System.out.println(d.name);
             for (Content c : d.content) {
                 builder.addField(c.name, c.val);
             }
